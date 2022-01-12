@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
-// const { json } = require("express/lib/response");
 
 //sign Up
 
