@@ -67,6 +67,8 @@ exports.createBloges = (req, res, next)=>{
         .then(docs => {
           const response = {
             count: docs.length,
+            status:"success",
+            data:{
             blogs: docs.map(doc => {
               return {
                 title: doc.title,
@@ -78,7 +80,7 @@ exports.createBloges = (req, res, next)=>{
                   url: "http://localhost:3000/blogs/" + doc._id
                 }
               };
-            })
+            })}
           };
           res.status(200).json(response);
         })

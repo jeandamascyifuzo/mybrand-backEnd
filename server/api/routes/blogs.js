@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-// const mongoose = require('mongoose');
 const multer = require('multer');
 const checkAuth = require('../midleware/check-auth');
 const BlogsController = require('../controllers/blogs');

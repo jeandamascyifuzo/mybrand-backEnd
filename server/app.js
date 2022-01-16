@@ -31,8 +31,8 @@ app.use((req, res, next) => {
     next();
   });
 
-app.use('/blogs', blogRoutes);
-app.use('/user', userRoutes);
+app.use('/api/v1/blogs', blogRoutes);
+app.use('/api/v1/user', userRoutes);
 
 app.use((req, res, next)=>{
     const error = new Error('not found');
