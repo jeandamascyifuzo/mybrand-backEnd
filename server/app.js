@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const blogRoutes = require('./api/routes/blogs');
 const userRoutes = require('./api/routes/user');
 const commentRoutes = require('./api/routes/comment');
+const contactRoutes = require('./api/routes/contact');
 
 mongoose.connect(
     "mongodb+srv://cyifuzo:" + 
@@ -35,6 +36,7 @@ app.use((req, res, next) => {
 app.use('/api/v1/blogs', blogRoutes);
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/comment', commentRoutes);
+app.use('/api/v1/contact', contactRoutes);
 
 app.use((req, res, next)=>{
     const error = new Error('not found');
