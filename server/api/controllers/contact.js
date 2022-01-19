@@ -5,7 +5,15 @@ exports.sendMessage = async(req,res)=>{
         const message = req.body
         const contact = new Contact({...message})
         await contact.save()
-        res.status(200).send("message sent successful")
+        res.status(200).send({
+            status: "message sent successful",
+            message:{
+                name: contact.name,
+                email: contact.email,
+                subject: contact.subject,
+                message: contact.message
+            }
+        })
     } catch (error) {
         res.status(500).send({message:error.message})
     }

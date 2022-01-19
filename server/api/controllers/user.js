@@ -91,6 +91,36 @@ exports.createUser = (req, res, next) => {
       });
   }
 
+  //get all users
+
+  exports.getUsers = (req, res, next)=>{
+    user.find()
+    .select("name email subject message _id")
+    .exec()
+    .then(docs => {
+      const response = {
+        count: docs.length,
+        status:"success",
+        data:{
+        user: docs.map(doc => {
+          return {
+            name: doc.name,
+            email: doc.email,
+            subject: doc.subject,
+            message: doc.message,
+            _id: doc._id
+          };
+        })}
+      };
+      res.status(200).json(response);
+    })
+  .catch(err =>{
+      res.status(500).json({
+          error:err
+      });
+  });
+}
+
   //delete user
   exports.deleteUser = (req, res, next) => {
     User.remove({ _id: req.params.userId })
