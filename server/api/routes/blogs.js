@@ -53,17 +53,11 @@ const upload = multer({storage: storage});
  */
 
  /**
-  * @swagger
-  * tags:
-  *   name: Blogs,
-  *   description: Managing Blog API
-  */
-
- /**
  * @swagger
  * /blogs:
  *   get:
  *     summary: Returns all blogs
+ *     tags: [Blogs]
  *     responses:
  *       200:
  *         description: The list of the Blogs
@@ -82,6 +76,7 @@ router.get('/', BlogsController.getBlogs);
  * /blogs:
  *   post:
  *     summary: Create a new Blog
+ *     tags: [Blogs]
  *     requestBody:
  *       required: true
  *       content:
@@ -106,6 +101,7 @@ router.post('/', checkAuth, upload.single('blogImage'), BlogsController.createBl
  * /blogs/{id}:
  *   get:
  *     summary: Get the Blog by id
+ *     tags: [Blogs]
  *     parameters:
  *       - in: path
  *         name: id
@@ -131,6 +127,7 @@ router.get('/:blogId', BlogsController.getBlog);
  * /blogs/{id}:
  *  put:
  *    summary: Update the Blog by the id
+ *    tags: [Blogs]
  *    parameters:
  *      - in: path
  *        name: id
@@ -165,6 +162,7 @@ router.patch('/:blogId', checkAuth, BlogsController.updateBlog);
  * /blogs/{id}:
  *   delete:
  *     summary: Delete the Blog by id
+ *     tags: [Blogs]
  *     parameters:
  *       - in: path
  *         name: id
