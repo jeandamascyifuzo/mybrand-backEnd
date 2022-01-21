@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const checkAuth = require('../midleware/check-auth');
 const userController = require('../controllers/user');
+//swagger documentation
 
 
 /**

@@ -1,4 +1,4 @@
-
+//schama
 const mongoose = require('mongoose');
 const commentSchema = mongoose.Schema({
     full: {

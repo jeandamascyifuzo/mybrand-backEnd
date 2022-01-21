@@ -12,6 +12,8 @@ const commentRoutes = require('./api/routes/comment');
 const contactRoutes = require('./api/routes/contact');
 const { getMaxListeners } = require('./api/models/blog');
 
+//swagger
+
 const options = {
 	definition: {
 		openapi: "3.0.0",
@@ -25,8 +27,23 @@ const options = {
 				url: "http://localhost:3000/api/v1",
 			},
 		],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          in: 'header',
+          bearerFormat: 'JWT'
+        }
+      }
+    },
+    security: [
+      {
+        bearerAuth: []
+      }
+    ]
 	},
-	apis: ["./api/routes/*.js"],
+	apis: ["./api/routes/*.js"]
 };
  const specification = swaggerJSDoc(options)
  app.use("/api/v1/doc", swaggerUi.serve, swaggerUi.setup(specification));

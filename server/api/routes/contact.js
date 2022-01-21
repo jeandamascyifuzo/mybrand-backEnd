@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const checkAuth = require('../midleware/check-auth');
 const contactController = require('../controllers/contact')
+//swagger documentation
 
 /**
 * @swagger

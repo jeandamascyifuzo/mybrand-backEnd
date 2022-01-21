@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const {default: validator} = require('validator');
-
+//schama
 const contactSchema = new mongoose.Schema({
     name: {
         type: String,

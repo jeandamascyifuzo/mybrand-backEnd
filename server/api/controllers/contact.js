@@ -18,7 +18,7 @@ exports.sendMessage = async(req,res)=>{
         res.status(500).send({message:error.message})
     }
 }
-
+//read message
 exports.getMessages = async(req,res)=>{
  
         const messages = await Contact.find({})

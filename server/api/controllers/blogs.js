@@ -2,16 +2,15 @@ const mongoose = require('mongoose');
 const Blog = require('../models/blog');
 
 //create blog post
-exports.createBloges = async (req, res, next)=>{
-    console.log(req.file)
+//create blog post
+exports.createBloges = (req, res, next)=>{
     const blog = new Blog({
         _id: new mongoose.Types.ObjectId(),
         title: req.body.title,
         content: req.body.content,
         blogImage: req.file.path
       });
-     await blog
-              .save()
+          blog.save()
               .then(result => {
                 res.status(201).json({
                   message: " Blog Created successfully",
@@ -97,14 +96,20 @@ exports.createBloges = async (req, res, next)=>{
         const id = req.params.blogId;
         const updateOps = {};
         for(const ops of req.body){
-            updateOps[ops.proTitle] = ops.value;
+            updateOps[ops.proName] = ops.value;
         }
         Blog.updateOne({ _id: id}, {$set: updateOps})
         .exec()
         .then(result =>{
+          // if(title.req.body === title.result.value){
+          //   res
+          //     .status(404)
+          //     .json({ message: "already exist" });
+          // }else{
             res.status(200).json({
               message:"Blog updated"
             });
+          // }
         })
         .catch(err =>{
            res.status(500).json({

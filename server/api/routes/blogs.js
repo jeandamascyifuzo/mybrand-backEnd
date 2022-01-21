@@ -20,7 +20,8 @@ const fileFilter = (req, file, cb) =>{
     cb(null, false);
   }
 } 
-const upload = multer({storage: storage});
+const upload = multer({storage: storage, fileFilter: fileFilter});
+//swagger documentation
 
 /**
 * @swagger
@@ -32,6 +33,13 @@ const upload = multer({storage: storage});
  *         - title
  *         - content
  *         - blogImage
+ *       parameter:
+ *         name: auth-token
+ *         in: header
+ *         description: Authorization reqiured
+ *         required: true
+ *         schema:
+ *         type: string
  *       properties:
  *         id:
  *           type: string
@@ -94,6 +102,7 @@ router.get('/', BlogsController.getBlogs);
  *         description: Some server error
  */
 
+
 router.post('/', checkAuth, upload.single('blogImage'), BlogsController.createBloges);
 
 /**
@@ -120,7 +129,7 @@ router.post('/', checkAuth, upload.single('blogImage'), BlogsController.createBl
  *         description: The Blog was not found
  */
 
-router.get('/:blogId', BlogsController.getBlog);
+router.get('/:blogId', upload.single('blogImage'), BlogsController.getBlog);
 
 /**
  * @swagger
@@ -154,7 +163,7 @@ router.get('/:blogId', BlogsController.getBlog);
  *        description: Some error happened
  */
 
-router.patch('/:blogId', checkAuth, BlogsController.updateBlog);
+router.patch('/:blogId', checkAuth, upload.single('blogImage'), BlogsController.updateBlog);
 
 
 /**

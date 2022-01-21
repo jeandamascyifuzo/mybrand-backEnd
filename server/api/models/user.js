@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//schama
 const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     fullName:{ 

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//schama
 const blogSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     title: {
@@ -10,7 +10,6 @@ const blogSchema = mongoose.Schema({
     content:{ 
          type: String, 
          required: true,
-         unique: true
         },
     blogImage:{
         type: String,

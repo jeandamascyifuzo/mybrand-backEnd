@@ -13,6 +13,8 @@ exports.addComment = async(req,res)=>{
     }
 }
 
+//get all comments
+
 exports.getComments = async(req,res)=>{
     
         const comments = await Comments.findOne({blog:req.params.id})
