@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Blog = require('../models/blog');
 
 //create blog post
-exports.createBloges = (req, res, next)=>{
+exports.createBloges = async (req, res, next)=>{
     console.log(req.file)
     const blog = new Blog({
         _id: new mongoose.Types.ObjectId(),
@@ -10,27 +10,28 @@ exports.createBloges = (req, res, next)=>{
         content: req.body.content,
         blogImage: req.file.path
       });
-      blog
-        .save()
-        .then(result => {
-          res.status(201).json({
-            message: " Blog Created successfully",
-            CreatedBlog: {
-                title: result.title,
-                content: result.content,
-                _id: result._id,
-                request: {
-                    type: 'GET',
-                    url: "http://localhost:3000/blogs/" + result._id
-                }
-            }
-          });
-        })
-        .catch(err => {
-          res.status(500).json({
-            error: err
-          });
-        });
+     await blog
+              .save()
+              .then(result => {
+                res.status(201).json({
+                  message: " Blog Created successfully",
+                  CreatedBlog: {
+                      title: result.title,
+                      content: result.content,
+                      blogImage: result.blogImage,
+                      _id: result._id,
+                      request: {
+                          type: 'GET',
+                          url: "http://localhost:3000/api/v1/blogs/" + result._id
+                      }
+                  }
+                });
+              })
+              .catch(err => {
+                res.status(500).json({
+                  error: err
+                });
+              });
     }
 
 //get single blog
@@ -45,7 +46,7 @@ exports.createBloges = (req, res, next)=>{
                   blog: doc,
                   request: { 
                       type: 'GET',
-                      url: 'http://localhost:3000/blogs'
+                      url: 'http://localhost:3000/api/v1/blogs'
                   }
               });
             } else {
@@ -77,7 +78,7 @@ exports.createBloges = (req, res, next)=>{
                 _id: doc._id,
                 request: {
                   type: "GET",
-                  url: "http://localhost:3000/blogs/" + doc._id
+                  url: "http://localhost:3000/api/v1/blogs/" + doc._id
                 }
               };
             })}

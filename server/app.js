@@ -3,10 +3,34 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 const blogRoutes = require('./api/routes/blogs');
 const userRoutes = require('./api/routes/user');
 const commentRoutes = require('./api/routes/comment');
+const contactRoutes = require('./api/routes/contact');
+const { getMaxListeners } = require('./api/models/blog');
+
+const options = {
+	definition: {
+		openapi: "3.0.0",
+		info: {
+			title: "Capstone Project",
+			version: "1.0.0",
+			description: "API documentation",
+		},
+		servers: [
+			{
+				url: "http://localhost:3000/api/v1",
+			},
+		],
+	},
+	apis: ["./api/routes/*.js"],
+};
+ const specification = swaggerJSDoc(options)
+ app.use("/api/v1/doc", swaggerUi.serve, swaggerUi.setup(specification));
+
 
 
 const commentRoutes = require('./api/routes/comment');
@@ -24,6 +48,7 @@ app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header(
@@ -40,6 +65,7 @@ app.use((req, res, next) => {
 app.use('/api/v1/blogs', blogRoutes);
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/comment', commentRoutes);
+app.use('/api/v1/contact', contactRoutes);
 
 
 app.use('/api/v1/comment', commentRoutes);
