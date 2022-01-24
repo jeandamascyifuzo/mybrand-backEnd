@@ -3,6 +3,7 @@ const router = express.Router()
 const checkAuth = require('../midleware/check-auth');
 const contactController = require('../controllers/contact')
 
+
 /**
 * @swagger
  * components:
@@ -76,6 +77,9 @@ router.post('/send',contactController.sendMessage)
  *               items:
  *                 $ref: '#/components/schemas/Contact'
  */
+
+router.post('/send',contactController.sendMessage)
+
 router.get('/read',contactController.getMessages)
 
 module.exports = router

@@ -11,13 +11,21 @@
   "author": "Jean Damascene CYIFUZO",
   "license": "ISC",
   "dependencies": {
+
     "@hapi/joi": "^17.1.1",
+
+
+
+    "@hapi/joi": "^17.1.1",
+
+
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.6",
     "morgan": "^1.10.0",
+
     "multer": "^1.4.4",
     "nanoid": "^3.2.0",
     "swagger": "^0.7.5",
@@ -25,6 +33,14 @@
     "swagger-ui-express": "^4.3.0",
     "validator": "^13.7.0",
     "yamljs": "^0.3.0"
+
+
+    "multer": "^1.4.4"
+
+    "multer": "^1.4.4",
+    "validator": "^13.7.0"
+
+
   },
   "devDependencies": {
     "chai": "^4.3.4",
