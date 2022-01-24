@@ -12,6 +12,8 @@ const commentRoutes = require('./api/routes/comment');
 const contactRoutes = require('./api/routes/contact');
 const { getMaxListeners } = require('./api/models/blog');
 
+//swagger documantation
+
 const options = {
 	definition: {
 		openapi: "3.0.0",
@@ -22,25 +24,35 @@ const options = {
 		},
 		servers: [
 			{
-				url: "http://localhost:3000/api/v1",
+				url: "https://cyifuzo-backend.herokuapp.com/api/v1",
 			},
 		],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          in: 'header',
+          bearerFormat: 'JWT'
+        }
+      }
+    },
+    security: [
+      {
+        bearerAuth: []
+      }
+    ]
 	},
-	apis: ["./api/routes/*.js"],
+	apis: ["./api/routes/*.js"]
 };
  const specification = swaggerJSDoc(options)
  app.use("/api/v1/doc", swaggerUi.serve, swaggerUi.setup(specification));
 
 
-
-const commentRoutes = require('./api/routes/comment');
-const contactRoutes = require('./api/routes/contact');
-
-
 mongoose.connect(
     "mongodb+srv://cyifuzo:" + 
     process.env.MONGO_PW +
-    "@cluster0.awubt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+    "@cluster0.awubt.mongodb.net/brandBandEnd?retryWrites=true&w=majority");
 
 mongoose.Promise = global.Promise;
 app.use(morgan('dev'));
@@ -66,11 +78,6 @@ app.use('/api/v1/blogs', blogRoutes);
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/comment', commentRoutes);
 app.use('/api/v1/contact', contactRoutes);
-
-
-app.use('/api/v1/comment', commentRoutes);
-app.use('/api/v1/contact', contactRoutes);
-
 
 app.use((req, res, next)=>{
     const error = new Error('not found');
