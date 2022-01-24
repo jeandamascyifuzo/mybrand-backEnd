@@ -5,8 +5,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
 //create user
-//create user
-//create user
+
 exports.createUser = (req, res, next) => {
     User.find({ email: req.body.email })
       .exec()

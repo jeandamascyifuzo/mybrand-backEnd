@@ -12,7 +12,6 @@ const commentRoutes = require('./api/routes/comment');
 const contactRoutes = require('./api/routes/contact');
 const { getMaxListeners } = require('./api/models/blog');
 
-//swagger
 
 const options = {
 	definition: {

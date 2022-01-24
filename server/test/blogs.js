@@ -16,8 +16,7 @@ function timeOut(done){
 
 //Blog API testing'
 //Get all the blogs
-//Blog API testing'
-//Get all the blogs
+
 
 describe('1) Get all the blogs', function () {
     // this.timeout(577);
