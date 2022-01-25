@@ -7,7 +7,7 @@ exports.sendMessage = async(req,res)=>{
         await contact.save()
 
         res.status(200).send({
-            status: "message sent successful",
+            status: " sent successfully",
             message:{
                 name: contact.name,
                 email: contact.email,

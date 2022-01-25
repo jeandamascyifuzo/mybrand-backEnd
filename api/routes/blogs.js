@@ -31,7 +31,8 @@ const upload = multer({storage: storage});
  *       required:
  *         - title
  *         - content
- *         - blogImage
+ *         - subtitle
+ *         - author
  *       properties:
  *         id:
  *           type: string
@@ -39,17 +40,21 @@ const upload = multer({storage: storage});
  *         title:
  *           type: string
  *           description: The blog title
+ *         subtitle:
+ *           type: string
+ *           description: The blog title
  *         content:
  *           type: string
  *           description: The content of blog
- *         blogImage:
+ *         author:
  *           type: string
- *           description: The blog Image
+ *           description: name of author
  *       example:
  *         id: d5fE_aszhjgggggbjasgj989870
  *         title: software development
  *         content: Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without
- *         blogImage: png87uyjbggnghncx778nugngxm 
+ *         subtitle: development
+ *         aothor: Damas
  */
 
  /**
@@ -94,7 +99,7 @@ router.get('/', BlogsController.getBlogs);
  *         description: Some server error
  */
 
-router.post('/', checkAuth, upload.single('blogImage'), BlogsController.createBloges);
+router.post('/', checkAuth, BlogsController.createBloges);
 
 /**
  * @swagger

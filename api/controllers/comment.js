@@ -4,12 +4,20 @@ const Comments = require('../models/comment')
 exports.addComment = async(req,res)=>{
     try {
         const data = (req.body)
-        const comment = new Comments({...data, blog:req.params.id})
+        const comments = new Comments({...data, blog:req.params.id})
 
-        await comment.save()
-        res.status(200).send(comment)
+        await comments.save()
+        res.status(200).send({
+            status: "success",
+            data: {
+                coment: comments
+            }
+        })
     } catch (error) {
-        res.status(400).send(error.message)
+        res.status(400).send({
+            status: "fail",
+            error: message
+        })
     }
 }
 
