@@ -74,12 +74,18 @@ exports.createUser = (req, res, next) => {
               }
             );
             return res.status(200).json({
+              status: "success",
+              data:{
               message: "Auth successful",
               token: token
+              }
             });
           }
           res.status(401).json({
+            status: "fail",
+            data:{
             message: "Auth failed"
+            }
           });
         });
       })

@@ -17,13 +17,12 @@ const blogSchema = mongoose.Schema({
          required: true,
          unique: true
         },
-    blogImage:{
-        type: String,
-        required: true
-    },
     author:{
         type: String,
         required: true
+    },
+    blogImage:{
+        type: String,
     }
 });
 

@@ -140,6 +140,7 @@ exports.createBloges = async (req, res, next)=>{
         .exec()
         .then(result =>{
             res.status(200).json({
+                status: "success",
                 message:"Blog deleted",
                 blog: result
             });
