@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="../style/login.css">
+  <title>Log In</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav>
+      <div class="logo">
+        <h2>Jean</h2>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <ul>
+          <li> <a href="/index.html">HOME</a></li>
+          <li> <a href="">ABOUT</a></li>
+          <li> <a href="">SKILLS</a></li>
+          <li> <a href="">PROJECTS</a></li>
+          <li> <a href="../pages/blogs.html">BLOGS</a></li>
+          <li> <a href="">CONTACT</a></li>
+          <li> <a href="#" class="btn">LOG IN</a></li>
+          <li> <a href="../pages/signup.html" class="btn">SIGN UP</a></li>
+        </ul>
+      </div>
+      <div class="menu">
+        <img src="/UI/images/icon-hamburger.svg" alt="menu">
+    </div>
+    </nav>
+  </header>
+  <section class="main">
+    <form id="main" class="mainlog">
+      <h2>SIGN IN</h2>
+      <div class="input-parent">
+        <label>Email<abbr class="required">*</abbr></label>
+        <input type="email" id="email">
+        <div class="error"></div>
+      </div>
+      <div class="input-parent">
+        <label for="password">Password<abbr class="required">*</abbr></label>
+        <input type="password" id="password">
+        <div class="error"></div>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button  id="loginbtn">Login</button>
+      <P>Don't have an account yet? <a href="../pages/signup.html">Sign up</a></P>
+    </form>
+  </section>
+  <footer class="footer">
+    <div class="footer-box">
+      <div class="logo1">
+        <h2>Jean</h2>
+      </div>
+    </div>
+    <div class="footer-box">
+      <h6>Quick link</h6>
+      <ul>
+        <li><a href="#">Blogs</a></li>
+        <li><a href="#">Sign In</a></li>
+        <li><a href="#">Sign Up</a></li>
+      </ul>
+    </div>
+    <div class="footer-box">
+      <h6>Location</h6>
+      <ul>
+        <li><a href="#">Kigali/Rwanda</a></li>
+        <li><a href="#">Nyarugenge</a></li>
+        <li><a href="#">Rugenge</a></li>
+      </ul>
+    </div>
+    <div class="footer-box">
+      <h6>Subscribe newsletter</h6>
+      <form action="">
+        <input type="email" placeholder="Enter Email Address">
+        <input type="submit" value="Subscribe">
+      </form>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+   <script defer  type="module" src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <!-- <script defer src="/mybrand/UI/javacript/index.js"></script> -->
+  <script  type="module" defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script  type="module" defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script  type="module" src="/UI/javacript/login.js"></script>
+</body>
+</html>
