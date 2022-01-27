@@ -1,48 +1,77 @@
 
+
 //ADD DATA
 
 document.getElementById("add").addEventListener("click", (event) => {
     event.preventDefault();
-    const Title = document.getElementById("title").value;
-    const ImageUrl = document.getElementById("image").value;
+    const title = document.getElementById("title").value;
+    const subtitle = document.getElementById("subtitle").value;
     const content = document.getElementById("content").value;
+    const author = document.getElementById("author").value;
+ 
+let _data = {
+    title,
+    subtitle, 
+    content,
+    author
+  }
   
-
-    const addData = () => {
-        db.collection("blog").add({
-            Title,
-            content,
-            ImageUrl,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        }).then((result) => {
-            const data = result.data;
-            localStorage.setItem("blogs", data);
-            
-        }).catch((error) => {
-            const errorMessage = error.message;
-            console.log(errorMessage);
-        })
-
-         document.getElementById("title").value="";
-         document.getElementById("image").value="";
-         document.getElementById("content").value="";
-
-    }
-    addData();    
+  console.log(_data)
+  
+    
+    addData(_data);  
+    
 })
+
+const addData = (_data) => {
+
+    fetch('https://cyifuzo-backend.herokuapp.com/api/v1/blogs', {
+method: "POST",
+body: JSON.stringify(_data),
+headers: {"Content-type": "application/json; charset=UTF-8"}
+})
+.then(response => response.json())
+       
+.then((result) => {
+        const data = result.data;
+        localStorage.setItem("blogs", data);
+        
+    }).catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+    })
+
+     document.getElementById("title").value="";
+     document.getElementById("subtitle").value="";
+     document.getElementById("content").value="";
+     document.getElementById("author").value="";
+     
+     getBlogs();
+}
 // GET BLOGS FROM FIREBASE
 
+// fetch('https://cyifuzo-backend.herokuapp.com/api/v1/blogs', {
+//     method: "GET",
+//     headers: {"Content-type": "application/json;charset=UTF-8"}
+//   })
+//   .then(response => response.json()) 
+//   .then(json => console.log(json)) 
+//   .catch(err => console.log(err));
+  
+
 const getBlogs =  async() => {
-    let result;
- await axios.get('https://cyifuzo-backend.herokuapp.com/api/v1/blogs').then((response)=>{
-      
- console.log(response)
- result=response
-    }).catch((error)=>{
-        console.log(error)
-    })
-  console.log(result?.data?.data?.blogs)
-  document.querySelector(".row").innerHTML = result?.data?.data?.blogs?.map((res)=>
+    let result=[];
+//  await axios.get('https://cyifuzo-backend.herokuapp.com/api/v1/blogs')
+fetch('https://cyifuzo-backend.herokuapp.com/api/v1/blogs', {
+    method: "GET",
+    headers: {"Content-type": "application/json;charset=UTF-8"}
+  })
+  .then(response => response.json()) 
+  .then(json => {
+      result = json.data.blogs
+    //   console.log(json.data.blogs)
+
+    document.querySelector(".row").innerHTML = result.map((res)=>
     `
       <div class="row fgfg">
       <div class="blog-col">
@@ -64,6 +93,20 @@ const getBlogs =  async() => {
       </div>
       `
   ).join("")
+    }) 
+  .catch(err => console.log(err));
+  
+  
+//  .then((response)=>{
+      
+//  console.log(response)
+//  result=response
+//     }).catch((error)=>{
+//         console.log(error)
+//     })
+//   console.log(result?.data?.data?.blogs)
+// console.log(result)
+  
 
 //   result?.data?.data?.blogs?.map((blogs) => `
 //   <div class="row fgfg">
