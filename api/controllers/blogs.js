@@ -86,8 +86,10 @@ exports.createBloges = async (req, res, next)=>{
             blogs: docs.map(doc => {
               return {
                 title: doc.title,
+                subtitle: doc.subtitle,
                 blogImage: doc.blogImage,
                 content: doc.content,
+                author: doc.author,
                 _id: doc._id,
                 request: {
                   type: "GET",

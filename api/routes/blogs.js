@@ -83,7 +83,7 @@ router.get('/', BlogsController.getBlogs);
  *     summary: Create a new Blog
  *     tags: [Blogs]
  *     requestBody:
- *       required: true
+ *      , upload.single('blogImage'), required: true
  *       content:
  *         application/json:
  *           schema:
@@ -99,7 +99,7 @@ router.get('/', BlogsController.getBlogs);
  *         description: Some server error
  */
 
-router.post('/', checkAuth, BlogsController.createBloges);
+router.post('/',upload.single('blogImage'), BlogsController.createBloges);
 
 /**
  * @swagger
