@@ -5,100 +5,52 @@
         });
 
 
+document.getElementById("btnMsg").addEventListener("click", (event) => {
+  event.preventDefault();
+  const name = document.getElementById("fname").value;
+  const email = document.getElementById("email").value;
+  const subject = document.getElementById("subject").value;
+  const message = document.getElementById("messages").value;;
 
- 
-
-
-//Add information to the database
-
-  document.getElementById("contactForm").addEventListener("submit", (event) => {
-    event.preventDefault();
-    const name = document.getElementById("fname").value;
-    const email = document.getElementById("email").value;
-    const subject = document.getElementById("subject").value;
-    const message = document.getElementById("messages").value;
-
-  const addMessage = () => {
-    db.collection("Messages").add({
-        name,
-        email,
-        subject,
-        message,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    }).then((result) => {
-        const data = result.data;
-        localStorage.setItem("contactform", data);
-        
-    }).catch((error) => {
-        const errorMessage = error.message;
-        console.log(errorMessage);
-    })
-  
-    // Clear form
-    document.getElementById('contactForm').reset();
-
+let _data = {
+  name ,
+  email, 
+  subject,
+  message
+  // author
 }
 
-addMessage();    
-})
+  console.log(_data)
 
-
-
- 
-
+// console.log(JSON.parse(localStorage.getItem("token")).token)
+sendMessage(_data);  
   
-
-
-
-// const btnNewsletter = document.getElementById("btn_submit_newletter");
-
-document.getElementById("btnMsg").addEventListener('click', (e) => {
-  e.preventDefault()
-  console.log("hello");
-  const names = document.getElementById("fname").value;
-const email = document.getElementById("email").value;
-const subject = document.getElementById("subject").value;
-const message = document.getElementById("messages").value;
-
-let contact= {
-  FullName: names,
-  email: email,
-  subject: subject,
-  message: message
-}
-sendMessage(contact);
-
 })
-
-const sendMessage = (contact) =>{
-
+const sendMessage = (_data) => {
   fetch('https://cyifuzo-backend.herokuapp.com/api/v1/contact/send', {
     method: "POST",
-    body: JSON.stringify(contact),
-    headers: {
-        'Content-Type': 'application/json',
-    }
-  
+    body: JSON.stringify(_data),
+    headers: {"Content-type": "application/json; charset=UTF-8"}
   })
-    .then((response) => {
-        // console.log("Success")
-        console.log(response);
-        //       Toastify({
-        //   text: "Message sent !!",
-        //   className: "info",
-        //   style: {
-        //     // background: "linear-gradient(to right, #00b09b, #96c93d)",
-        //     background: "#d81515",
-            
-        //   }
-        // }).showToast();
-    })
-    .catch((error) => {
-        console.log(error);
-    });
+  .then(response => response.json()) 
+  .then(json => console.log(json))
+  .catch(err => console.log(err))
+  // Toastify({
+  //   text: "Message sent !!",
+  //   className: "info",
+  //   style: {
+  //     // background: "linear-gradient(to right, #00b09b, #96c93d)",
+  //     background: "#d81515",
+      
+  //   }
+  // }).showToast();
+  
+   document.getElementById("fname").value="";
+   document.getElementById("email").value="";
+   document.getElementById("subject").value="";
+   document.getElementById("messages").value="";
+  //  document.getElementById("author").value="";
 }
-
-
 
 
 
