@@ -87,49 +87,15 @@ const validateInputs = () => {
     }
 };
 
-
-//firebase
-console.log("hello");
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyA8RalzTwbiyOFjIAZ8XD0-tz5erWwZa2A",
-        authDomain: "capstone-project-2c209.firebaseapp.com",
-        databaseURL: "https://capstone-project-2c209-default-rtdb.firebaseio.com",
-        projectId: "capstone-project-2c209",
-        storageBucket: "capstone-project-2c209.appspot.com",
-        messagingSenderId: "908272886510",
-        appId: "1:908272886510:web:3bbb7137663785d85709ff"
-      };
-    //   // Initialize Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    // const db = firebase.firestore();
-    const auth =firebase.auth()
-    function login(){
-        var email = document.getElementById("email");
-        var password = document.getElementById("password");
-        const promise = auth.signInWithEmailAndPassword(email.value, password.value);
-        promise.catch(e => alert(e.message));
-        alert("signed In" +email.value);
-    }
-
-    // function login(){
-    //     var email = document.getElementById("email");
-    //     var password = document.getElementById("password");
-    //     const promise = auth.createUserWithEmailAndPassword(email.value, password.value);
-    //     promise.catch(e => alert(e.message));
-    //     alert("signed In");
-    // }
-
-
-
-
       document.getElementById("loginbtn").addEventListener("click",(event)=>{
           event.preventDefault()
          let email = document.getElementById("email").value;
          let password = document.getElementById("password").value;
 
          axios.post("https://cyifuzo-backend.herokuapp.com/api/v1/user/login",{email:email,password:password}).then((user)=>{
-             console.log(user)
+             console.log(user?.data?.token)
+             localStorage.setItem("token",`Bearer ${user?.data?.token}`);
+             location.href =  '../blogBoard/boardIndex.html';
          }).catch((error)=>{
              console.log(error)
          })

@@ -6,21 +6,8 @@
 
 
 
-        //contact form validation and fire base
+ 
 
-//     // Initialize Firebase (ADD YOUR OWN DATA)
-const firebaseConfig = {
-    apiKey: "AIzaSyA8RalzTwbiyOFjIAZ8XD0-tz5erWwZa2A",
-    authDomain: "capstone-project-2c209.firebaseapp.com",
-    projectId: "capstone-project-2c209",
-    storageBucket: "capstone-project-2c209.appspot.com",
-    messagingSenderId: "908272886510",
-    appId: "1:908272886510:web:3bbb7137663785d85709ff"
-  };
-
-//   // Initialize Firebase
- const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
 
 //Add information to the database
 
@@ -54,6 +41,66 @@ const firebaseConfig = {
 
 addMessage();    
 })
+
+
+
+ 
+
+  
+
+
+
+// const btnNewsletter = document.getElementById("btn_submit_newletter");
+
+document.getElementById("btnMsg").addEventListener('click', (e) => {
+  e.preventDefault()
+  console.log("hello");
+  const names = document.getElementById("fname").value;
+const email = document.getElementById("email").value;
+const subject = document.getElementById("subject").value;
+const message = document.getElementById("messages").value;
+
+let contact= {
+  FullName: names,
+  email: email,
+  subject: subject,
+  message: message
+}
+sendMessage(contact);
+
+})
+
+const sendMessage = (contact) =>{
+
+  fetch('https://cyifuzo-backend.herokuapp.com/api/v1/contact/send', {
+    method: "POST",
+    body: JSON.stringify(contact),
+    headers: {
+        'Content-Type': 'application/json',
+    }
+  
+  })
+    .then((response) => {
+        // console.log("Success")
+        console.log(response);
+        //       Toastify({
+        //   text: "Message sent !!",
+        //   className: "info",
+        //   style: {
+        //     // background: "linear-gradient(to right, #00b09b, #96c93d)",
+        //     background: "#d81515",
+            
+        //   }
+        // }).showToast();
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+}
+
+
+
+
 
 // LATEST BLOGS
 const getBlogs = () => {

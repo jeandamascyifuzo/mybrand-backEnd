@@ -52,11 +52,10 @@ function readMore (){
          ${res?.content}
          </p>
         
-         <button id=${res._id}+edit_blog class="blog__update--btn"onclick="myFunc(${JSON.stringify(res).split('"').join("&quot;")})">
-         Edit
+        
          </button>
-         <button id="deletes" class="blog__delete--btn"onClick="deleteBlog(${JSON.stringify(res).split('"').join("&quot;")})">
-         Delete
+         <button id="readmore"onClick="deleteBlog(${JSON.stringify(res).split('"').join("&quot;")})">
+         Readmore
          </button>
           </div>
          </div>

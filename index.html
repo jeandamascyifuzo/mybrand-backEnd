@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="UI/style/Index.css">
     <link rel="stylesheet" href="/UI/javacript/index.js">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <title>Capstone-project</title>
 </head>
@@ -179,7 +180,7 @@
                         <label for="message">Message <abbr class="required">*</abbr></label>
                         <textarea id="messages" placeholder="Write something.." style="height:200px"></textarea>
                     </div>
-                    <input type="submit" value="Send Message">
+                    <input type="submit" id="btnMsg" value="Send Message">
                     <div class="error"></div>
                     <div class="alter"> Message send</div>
                 </form>
@@ -235,8 +236,6 @@
         </div>
     </footer>
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="UI/javacript/index.js"></script>
 </body>
 
