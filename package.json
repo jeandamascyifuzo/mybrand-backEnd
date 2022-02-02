@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "mocha"
+    "test": "mocha",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha test -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js"
   },
   "keywords": [],
   "author": "Jean Damascene CYIFUZO",
@@ -13,6 +15,8 @@
     "@hapi/joi": "^17.1.1",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
+    "coverage": "^0.4.1",
+    "coveralls": "^3.1.1",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "mockgoose": "^8.0.4",
@@ -20,6 +24,7 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.4",
     "nanoid": "^3.2.0",
+    "nyc": "^15.1.0",
     "supertest": "^6.2.2",
     "swagger": "^0.7.5",
     "swagger-jsdoc": "^6.1.0",

@@ -384,7 +384,8 @@ nav img{
       margin-bottom: 10px;
   }
   .phone span, .email span, .github span{
-    background-color: #f44336;
+    /* background-color: #000; */
+    font-size: medium;
 } 
 
 .twitter a{

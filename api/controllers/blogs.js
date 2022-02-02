@@ -9,7 +9,7 @@ exports.createBloges = async (req, res, next)=>{
         title: req.body.title,
         subtitle: req.body.subtitle,
         content: req.body.content,
-        blogImage: req.file.path,
+        blogImage: req.body.blogImage,
         author: req.body.author
       });
      await blog

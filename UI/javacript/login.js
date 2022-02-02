@@ -95,11 +95,13 @@ const validateInputs = () => {
          axios.post("https://cyifuzo-backend.herokuapp.com/api/v1/user/login",{email:email,password:password}).then((user)=>{
              console.log(user?.data?.token)
              localStorage.setItem("token",`Bearer ${user?.data?.token}`);
-             location.href =  '../blogBoard/boardIndex.html';
+             if(email === 'cyifuzo@gmail.com' && password === 'test123'){
+                 location.href =  '../blogBoard/boardIndex.html';
+             }else{
+                location.href =  '../pages/blogs.html'; 
+             }
          }).catch((error)=>{
              console.log(error)
          })
-
-          console.log("hello ")
       })
   

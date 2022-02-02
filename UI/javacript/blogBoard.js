@@ -177,12 +177,7 @@ fetch(`https://cyifuzo-backend.herokuapp.com/api/v1/blogs/${id}`, {
 }
 
 
-// function deleteBlog(blog) {
-//     document.getElementById("deletes").addEventListener("click",(event)=>{
-//       event.preventDefault()
-//       db.collection("blog").doc(blog.id).delete()
-//     })
-// }
+
 // GETTING BLOG CONTENTS AND ID 
 function myFunc(blog) {
     document.querySelector(".blog__update--btn").addEventListener('click', (event) => {
@@ -202,7 +197,24 @@ function myFunc(blog) {
         // document.getElementById("authorr").value = author;
        
     })
-    
-   
 }
-//edit_blog
+//logout 
+document.getElementById('logout').addEventListener('click', (e) =>{
+    e.preventDefault()
+    console.log("clicked")
+    const token =localStorage.getItem('token');
+    const log = ()=>{
+    (async () => {
+        const token = await new Authenticator().logout();
+        if (token) {
+         logger.success('Logout successful');
+        }
+        process.exit(0);
+       })().catch(async (error) => {
+        logger.error(error);
+        process.exit(1);
+       });
+       log()
+    }
+    location.href =  '../pages/login.html'; 
+})
