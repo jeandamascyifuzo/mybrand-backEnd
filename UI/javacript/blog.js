@@ -90,7 +90,8 @@ fetch(`https://cyifuzo-backend.herokuapp.com/api/v1/blogs/${id}`, {
     </p>
    
     
-    </button>
+    <button id="${res._id}" class="readMore" onclick = "comment('${res._id}')">comment</button>
+  
      </div>
     </div>
     `
@@ -101,6 +102,10 @@ fetch(`https://cyifuzo-backend.herokuapp.com/api/v1/blogs/${id}`, {
 .catch(err => console.log(err));
 
 }
+
+ 
+  
+
 
 
 

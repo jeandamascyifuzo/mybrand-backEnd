@@ -14,7 +14,7 @@ let _data = {
     // author
   }
   
-//   console.log(_data)
+  console.log(_data)
   
   // console.log(JSON.parse(localStorage.getItem("token")).token)
     addData(_data);  

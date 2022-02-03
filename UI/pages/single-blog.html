@@ -38,15 +38,26 @@
     <section id="contact" class="contact">
         <div class="row1" id="single-row">
             <div class="contact-col">
-                <form action="action">
-                  <label for="fname">Names</label>
-                  <input type="text" id="fname" placeholder=" type names">
-                  <label for="email">Email</label>
-                  <input type="email" id="email" placeholder="cyofuzo@gmail.com">
-                  <label for="message">Comment</label>
-                  <textarea id="submit" placeholder="Write something.." style="height:200px"></textarea>
-                  <input type="submit" value="Send">
-                </form>
+               
+                    <form id="singleBlog">
+                       
+                        <div class="contact-co">
+                            <label for="fname">Full Name</label>
+                            <input type="text" id="fname" placeholder=" type names">
+                            <div class="error"></div>
+                        </div>
+                      
+                      
+                        <div class="contact-co">
+                            <label for="message">Comment</label>
+                            <textarea id="messages" placeholder="Write Comments.." style="height:200px"></textarea>
+                        </div>
+                        <button  id="sendCommnet">Send Comment</button>
+                        <!-- <input type="submit" id="sendCommnet" value="Send Comment"> -->
+                        <div class="error"></div>
+                      
+                    </form>
+            
             </div>
         </div>
     </section>
