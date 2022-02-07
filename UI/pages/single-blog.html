@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education</title>
+    
+    <link rel="stylesheet" href="/UI/style/singleblog.css">
+</head>
+<body>
+    <header class="header">
+        <nav>
+        <div class="logo"> <h2>Jean</h2></div>
+        <div class="nav-links" id="navLinks">
+            <ul>
+                <li> <a href="/index.html">HOME</a></li>
+                <li> <a href="">ABOUT</a></li>
+                <li> <a href="">SKILLS</a></li>
+                <li> <a href="">PROJECTS</a></li>
+                <li> <a href="../pages/blogs.html">BLOGS</a></li>
+                <li> <a href="">CONTACT</a></li>
+                <!-- <li> <a href="/UI/pages/login.html" class="btn">LOG IN</a></li>
+                <li> <a href="/UI/pages/signup.html" class="btn">SIGN UP</a></li> -->
+            </ul>
+        </div>
+        <img src="/UI/images/icon-hamburger.svg" alt="menu" class="menu">
+        </nav>
+    </header>
+
+  <section class="main"> 
+    <div class="dashboard__blogs--card">
+    <div class="row2"id="singleblog">
+       
+    </div> 
+</div> 
+  </section>
+    <section id="contact" class="contact">
+        <div class="row1" id="single-row">
+            <div class="contact-col">
+               
+                    <form id="singleBlog">
+                       
+                        <div class="contact-co">
+                            <label for="fname">Full Name</label>
+                            <input type="text" id="fname" placeholder=" type names">
+                            <div class="error"></div>
+                        </div>
+                      
+                      
+                        <div class="contact-co">
+                            <label for="message">Comment</label>
+                            <textarea id="messages" placeholder="Write Comments.." style="height:200px"></textarea>
+                        </div>
+                        <button  id="sendCommnet">Send Comment</button>
+                        <!-- <input type="submit" id="sendCommnet" value="Send Comment"> -->
+                        <div class="error"></div>
+                      
+                    </form>
+            
+            </div>
+        </div>
+    </section>
+
+    <footer>
+      <div class="footer-box">
+          <div class="logo1">
+              <h2>Jean</h2>
+          </div>
+      </div>
+      <div class="footer-box">
+          <h6>Quick link</h6>
+          <ul>
+              <li><a href="#">Blogs</a></li>
+              <li><a href="#">Sign In</a></li>
+              <li><a href="#">Sign Up</a></li>
+          </ul>
+      </div>
+      <div class="footer-box">
+          <h6>Location</h6>
+          <ul>
+              <li><a href="#">Kigali/Rwanda</a></li>
+              <li><a href="#">Nyarugenge</a></li>
+              <li><a href="#">Rugenge</a></li>
+          </ul>
+      </div>
+      <div class="footer-box">
+          <h6>Subscribe newsletter</h6>
+          <form action="">
+              <input type="text" placeholder="Enter Email Address">
+              <input type="submit" value="Subscribe">
+          </form>
+      </div>
+  </footer>
+</body>
+<script src="../javacript/blog.js"></script>
+<script src="../javacript/singleBlog.js"></script>
+
+</html>

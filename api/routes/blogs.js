@@ -4,23 +4,23 @@ const multer = require('multer');
 const checkAuth = require('../midleware/check-auth');
 const BlogsController = require('../controllers/blogs');
 
-const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, './uploads/');
-  },
-  filename: function(req, file, cb) {
-    cb(null, new Date().toISOString() + file.originalname);
-  }
-});
+// const storage = multer.diskStorage({
+//   destination: function(req, file, cb) {
+//     cb(null, './uploads/');
+//   },
+//   filename: function(req, file, cb) {
+//     cb(null, new Date().toISOString() + file.originalname);
+//   }
+// });
 
-const fileFilter = (req, file, cb) =>{
-  if(file.minetype === 'image/JPG' || 'image/jpeg' || 'image/png'){
-    cb(null, true);
-  }else{
-    cb(null, false);
-  }
-} 
-const upload = multer({storage: storage});
+// const fileFilter = (req, file, cb) =>{
+//   if(file.minetype === 'image/JPG' || 'image/jpeg' || 'image/png'){
+//     cb(null, true);
+//   }else{
+//     cb(null, false);
+//   }
+// } 
+// const upload = multer({storage: storage});
 
 /**
 * @swagger
@@ -83,7 +83,7 @@ router.get('/', BlogsController.getBlogs);
  *     summary: Create a new Blog
  *     tags: [Blogs]
  *     requestBody:
- *       required: true
+ *      , upload.single('blogImage'), required: true
  *       content:
  *         application/json:
  *           schema:
@@ -99,7 +99,7 @@ router.get('/', BlogsController.getBlogs);
  *         description: Some server error
  */
 
-router.post('/', checkAuth, BlogsController.createBloges);
+router.post('/', BlogsController.createBloges);
 
 /**
  * @swagger

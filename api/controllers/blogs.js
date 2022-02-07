@@ -9,7 +9,7 @@ exports.createBloges = async (req, res, next)=>{
         title: req.body.title,
         subtitle: req.body.subtitle,
         content: req.body.content,
-        blogImage: req.file.path,
+        blogImage: req.body.blogImage,
         author: req.body.author
       });
      await blog
@@ -86,8 +86,10 @@ exports.createBloges = async (req, res, next)=>{
             blogs: docs.map(doc => {
               return {
                 title: doc.title,
+                subtitle: doc.subtitle,
                 blogImage: doc.blogImage,
                 content: doc.content,
+                author: doc.author,
                 _id: doc._id,
                 request: {
                   type: "GET",

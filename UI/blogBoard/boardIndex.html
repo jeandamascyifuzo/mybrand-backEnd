@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/UI/style/blogBoard.css">
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <div class="logo">
+                <h2>Jean</h2>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <ul>
+                    <li> <a href="/index.html">HOME</a></li>
+                    <li> <a href="/UI/pages/blogs.html">BLOGS</a></li>
+                    <li> <a id="logout" class="btn">LOG OUT</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+  <div class="dashboard">  
+   <div class="dashboard__container">
+       <form>
+        <input  id="blog_id" placeholder="blog id" class="bbb">
+        <input type="text" id="title" placeholder="Title">
+        <input type="text" id="subtitle" placeholder="Sub Title">
+        <!-- <input type="text" id="bloger" placeholder="bloger"> -->
+        <input type="text" id="image" placeholder="blog image-link">
+       <!-- <input type="text" id="author" placeholder="Author"> -->
+       <textarea type="text" id="content" placeholder="contents">
+    </textarea>
+       <button id="add" class="dashboard__submit--btn">Add</button>
+       <button id="update_blog" class="dashboard__update--btn">Update</button>
+       
+       </form>
+   </div>  
+   <div class="dashboard__blogs--card">
+    <div class="row"> 
+    </div>
+   </div>
+  </div>
+
+  <!-- footer -->
+  <footer>
+    <div class="footer-box">
+        <div class="logo1">
+            <h2>Jean</h2>
+        </div>
+    </div>
+    <div class="footer-box">
+        <h6>Quick link</h6>
+        <ul>
+            <li><a href="#">Blogs</a></li>
+            <li><a href="#">Sign In</a></li>
+            <li><a href="#">Sign Up</a></li>
+        </ul>
+    </div>
+    <div class="footer-box">
+        <h6>Location</h6>
+        <ul>
+            <li><a href="#">Kigali/Rwanda</a></li>
+            <li><a href="#">Nyarugenge</a></li>
+            <li><a href="#">Rugenge</a></li>
+        </ul>
+    </div>
+    <div class="footer-box">
+        <h6>Subscribe newsletter</h6>
+        <form action="">
+            <input class="textArea" type="text" placeholder="Enter Email Address">
+            <input class="btnArea" type="submit" value="Subscribe">
+        </form>
+    </div>
+</footer>
+    <script src="../javacript/blogBoard.js"></script>
+</body>
+</html>
