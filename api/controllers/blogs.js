@@ -7,18 +7,23 @@ exports.createBloges = async (req, res, next)=>{
     const blog = new Blog({
         _id: new mongoose.Types.ObjectId(),
         title: req.body.title,
+        subtitle: req.body.subtitle,
         content: req.body.content,
-        blogImage: req.file.path
+        blogImage: req.file.path,
+        author: req.body.author
       });
      await blog
               .save()
               .then(result => {
                 res.status(201).json({
-                  message: " Blog Created successfully",
+                  status: "success",
+                  message: " Blog Created",
                   CreatedBlog: {
                       title: result.title,
+                      subtitle: result.subtitle,
                       content: result.content,
                       blogImage: result.blogImage,
+                      author: result.author,
                       _id: result._id,
                       request: {
                           type: 'GET',
@@ -29,6 +34,7 @@ exports.createBloges = async (req, res, next)=>{
               })
               .catch(err => {
                 res.status(500).json({
+                  status: "fail",
                   error: err
                 });
               });
@@ -38,32 +44,39 @@ exports.createBloges = async (req, res, next)=>{
     exports.getBlog = (req, res, next)=>{
         const id = req.params.blogId;
         Blog.findById(id)
-          .select('title blogImage content _id')
+          .select('title subtitle content author blogImage _id')
           .exec()
           .then(doc => {
             if (doc) {
               res.status(200).json({
+                  status: "success",
+                  data:{
                   blog: doc,
                   request: { 
                       type: 'GET',
                       url: 'http://localhost:3000/api/v1/blogs'
                   }
+                }
               });
             } else {
               res
                 .status(404)
-                .json({ message: "No valid entry found for provided ID" });
+                .json({ 
+                  status: "fail",
+                  message: "No valid entry found for provided ID" });
             }
           })
           .catch(err => {
-            res.status(500).json({ error: err });
+            res.status(500).json({ 
+              status: "fail",
+              error: err });
           });
     }
 
 //get all blogs
     exports.getBlogs = (req, res, next)=>{
         Blog.find()
-        .select("title blogImage content _id")
+        .select('title subtitle content author blogImage _id')
         .exec()
         .then(docs => {
           const response = {
@@ -87,6 +100,7 @@ exports.createBloges = async (req, res, next)=>{
         })
       .catch(err =>{
           res.status(500).json({
+              status: "fail",
               error:err
           });
       });
@@ -103,11 +117,17 @@ exports.createBloges = async (req, res, next)=>{
         .exec()
         .then(result =>{
             res.status(200).json({
-              message:"Blog updated"
+              status: "success",
+              message:"Blog updated",
+              data:{
+                blog:result
+              }
+              
             });
         })
         .catch(err =>{
            res.status(500).json({
+              status: "fail",
                error: err
            });
         });
@@ -116,15 +136,18 @@ exports.createBloges = async (req, res, next)=>{
     //delete blog
     exports.deleteBlog = (req, res, next)=>{
         const id = req.params.blogId;
-        Blog.remove({ _id: id})
+        Blog.deleteOne({ _id: id})
         .exec()
         .then(result =>{
             res.status(200).json({
-                message:"Blog deleted"
+                status: "success",
+                message:"Blog deleted",
+                blog: result
             });
         })
         .catch(err => {
             res.status(500).json({
+                status: "fail",
                 error: err
             });
         });
